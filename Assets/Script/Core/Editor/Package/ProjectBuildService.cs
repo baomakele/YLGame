@@ -256,23 +256,24 @@ class ProjectBuildService : Editor
         //打包
         string path = ExportPath + "/" + GetPackageName() + ".apk";
 
+        Debug.LogError("path ==========" + path);
 
-#if UNITY_2017_1_OR_NEWER
-		BuildPlayerOptions bo = new BuildPlayerOptions();
-		bo.scenes = GetBuildScenes();
-		bo.target = BuildTarget.Android;
-		bo.options = BuildOptions.None;
-        bo.locationPathName = path;
+//#if UNITY_2017_1_OR_NEWER
+//		BuildPlayerOptions bo = new BuildPlayerOptions();
+//		bo.scenes = GetBuildScenes();
+//		bo.target = BuildTarget.Android;
+//		bo.options = BuildOptions.None;
+//        bo.locationPathName = path;
 		
-		BuildPipeline.BuildPlayer(bo);
-#else
-        BuildOptions option = BuildOptions.None;
-        if (ApplicationMode == AppMode.Release)
-        {
-            option = BuildOptions.Il2CPP;
-        }
-        BuildPipeline.BuildPlayer(GetBuildScenes(), path, BuildTarget.Android, option);
-#endif
+//		BuildPipeline.BuildPlayer(bo);
+//#else
+//        BuildOptions option = BuildOptions.None;
+//        if (ApplicationMode == AppMode.Release)
+//        {
+//            option = BuildOptions.Il2CPP;
+//        }
+//        BuildPipeline.BuildPlayer(GetBuildScenes(), path, BuildTarget.Android, option);
+//#endif
 
 
     }
