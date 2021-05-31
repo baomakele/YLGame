@@ -223,25 +223,25 @@ class ProjectBuildService : Editor
 
     static void BuildForAndroid()
     {
-        SwitchPlatform(BuildTarget.Android);
+      //  SwitchPlatform(BuildTarget.Android);
 
         //输出日志
-        PrintDebug();
+      //  PrintDebug();
 
         //使用Lua
-        SetLua(IsUseLua);
+      //  SetLua(IsUseLua);
 
         //发布模式
-        SetApplicationMode(ApplicationMode);
+     //   SetApplicationMode(ApplicationMode);
 
         //使用Resource或者使用Bundle
-        UseResourcesOrBundle(IsUseAssetsBundle);
+      //  UseResourcesOrBundle(IsUseAssetsBundle);
 
         //切换渠道
-        ChangeChannel(ChannelName);
+      //  ChangeChannel(ChannelName);
 
         //设置编译指令
-        ApplyScriptDefine();
+       // ApplyScriptDefine();
 
         //设置签名
         //签名路径
