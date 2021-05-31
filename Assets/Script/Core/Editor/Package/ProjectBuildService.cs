@@ -222,7 +222,7 @@ class ProjectBuildService : Editor
 
     static void BuildForAndroid()
     {
-
+        Debug.LogError("666666666666666666666666");
     }
     static void BuildForAndroid1()
     {
