@@ -222,6 +222,10 @@ class ProjectBuildService : Editor
 
     static void BuildForAndroid()
     {
+
+    }
+    static void BuildForAndroid1()
+    {
         SwitchPlatform(BuildTarget.Android);
 
         //输出日志
