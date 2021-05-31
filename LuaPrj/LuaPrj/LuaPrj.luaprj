@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<Project Name="LuaPrj.luaprj" Cmd="" Arg="" Dir="" Toggle="false" >
+    <Filter RelativePath=".\..\..\Assets\Resources\LuaLib" Toggle="false" >
+        <LuaFile RelativePath=".\LuaEventDispatcher.txt" />
+        <LuaFile RelativePath=".\LuaFormatTools.txt" />
+        <LuaFile RelativePath=".\luaJson.txt" />
+        <LuaFile RelativePath=".\LuaPrintTable.txt" />
+        <LuaFile RelativePath=".\LuaStringHelper.txt" />
+        <Filter RelativePath=".\FrameWork" Toggle="false" >
+            <LuaFile RelativePath=".\LuaFrameWorkEventName.txt" />
+            <Filter RelativePath=".\Data" Toggle="false" >
+                <LuaFile RelativePath=".\LuaDataHelper.txt" />
+            </Filter>
+            <Filter RelativePath=".\Status" Toggle="true" >
+                <LuaFile RelativePath=".\LuaStatusManager.txt" />
+                <LuaFile RelativePath=".\LuaStatusMetaTable.txt" />
+            </Filter>
+            <Filter RelativePath=".\UI" Toggle="false" >
+                <LuaFile RelativePath=".\LuaUIManager.txt" />
+                <LuaFile RelativePath=".\LuaUIWindowMetatable.txt" />
+            </Filter>
+            <Filter RelativePath=".\Update" Toggle="true" >
+                <LuaFile RelativePath=".\LuaUpdate.txt" />
+            </Filter>
+            <Filter RelativePath=".\Net" Toggle="false" >
+                <LuaFile RelativePath=".\LuaNetManager.txt" />
+            </Filter>
+        </Filter>
+        <Filter RelativePath=".\Unity" Toggle="true" >
+            <LuaFile RelativePath=".\LuaUnityDefine.txt" />
+        </Filter>
+        <Filter RelativePath=".\protobufLib" Toggle="false" >
+            <LuaFile RelativePath=".\a_wire_format.txt" />
+            <LuaFile RelativePath=".\b_type_checkers.txt" />
+            <LuaFile RelativePath=".\containers.txt" />
+            <LuaFile RelativePath=".\descriptor.txt" />
+            <LuaFile RelativePath=".\e_text_format.txt" />
+            <LuaFile RelativePath=".\f_listener.txt" />
+            <LuaFile RelativePath=".\g_encoder.txt" />
+            <LuaFile RelativePath=".\h_decoder.txt" />
+            <LuaFile RelativePath=".\protobuf.txt" />
+        </Filter>
+    </Filter>
+    <Filter RelativePath=".\..\..\Assets\Resources\Lua" Toggle="false" >
+        <LuaFile RelativePath=".\luaMain.txt" />
+        <Filter RelativePath=".\UI" Toggle="false" >
+            <LuaFile RelativePath=".\LuaFirstUIWindow.txt" />
+            <LuaFile RelativePath=".\LuaNetTestUIWindow.txt" />
+        </Filter>
+        <Filter RelativePath=".\protobuf" Toggle="false" >
+            <LuaFile RelativePath=".\msgID_pb.lua" />
+            <LuaFile RelativePath=".\role_client_pb.lua" />
+            <LuaFile RelativePath=".\login_client_pb.lua" />
+            <LuaFile RelativePath=".\login_client_pbt.txt" />
+            <LuaFile RelativePath=".\msgID_pbt.txt" />
+            <LuaFile RelativePath=".\role_client_pbt.txt" />
+        </Filter>
+    </Filter>
+</Project>

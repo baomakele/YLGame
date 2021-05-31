@@ -1,0 +1,62 @@
+NetTestUIWindow = UIWindowMetaTable:New();
+
+function NetTestUIWindow:OnInit()
+end
+
+function NetTestUIWindow:OnOpen()
+	
+	self.mClick1 = handler(self, self.OnClick1)
+	self.UIWindow_ui:AddOnClickListener("Button1", self.mClick1,nil);
+	self.mText = self.UIWindow_ui:GetText("Text");
+	
+	self.mNetCallBack = handler(self, self.Login_Res_MSG)
+	LuaNetManager.RegisterListenNetMsg(msgID_pb.S2C_Login_Res_MSG,self.mNetCallBack);
+	
+	
+	
+end
+
+function NetTestUIWindow:Login_Res_MSG(eventID,msgData)
+	
+	local Msg = login_client_pb.S2C_Login_Res()
+	Msg:ParseFromString(msgData)
+	CommonLuaTools.LogError("obj---------------------- = "..Msg.status)
+	CommonLuaTools.LogError("name---------------------- = "..Msg.name)
+	
+	self.mText.text = Msg.status..Msg.name;
+	
+end
+	
+
+function NetTestUIWindow:OnClick1()
+
+	local request = login_client_pb.C2S_Login_Req()
+    request.roleId = 12456;
+    local param = request:SerializeToString()
+    LuaNetManager.SendNetMsg(msgID_pb.C2S_Login_Req_MSG,param)
+	
+end
+
+
+function NetTestUIWindow:OnClose()
+end
+
+function NetTestUIWindow:EnterAnim()
+	return 0;
+end
+
+function NetTestUIWindow:OnCompleteEnterAnim()
+end
+
+function NetTestUIWindow:OnRefresh()
+end
+
+function NetTestUIWindow:ExitAnim()
+	return 0;
+end
+
+function NetTestUIWindow:OnCompleteExitAnim()
+end
+
+function NetTestUIWindow:OnDestroy()
+end

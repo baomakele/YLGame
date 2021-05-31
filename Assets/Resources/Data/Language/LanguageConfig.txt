@@ -1,0 +1,1 @@
+{"defaultLanguage":"ChineseSimplified","gameExistLanguages":["ChineseSimplified","ChineseSimplified","Japanese"],"useSystemLanguage":true}

@@ -1,0 +1,48 @@
+LuaNetManager = {};
+local Global = _G
+function LuaNetManager.OnInit()
+
+	NetworkManager.Init("ProtocolNetworkService","SocketService");
+	--InputManager.AddListener("InputNetworkMessageEvent","S2C_Login_Res_MSG",LuaNetManager.CProtoNetCallBack);
+	NetworkManager.RegisterListenNetMsgForLua(LuaNetManager.LuaProtoNetCallBack);	
+	
+end
+
+
+function LuaNetManager.CProtoNetCallBack(event)
+	for k ,v in pairs(Dict2Table(event.Data)) do 
+		--CommonLuaTools.LogError("k ---------------------- =   "..k )
+		--CommonLuaTools.LogError("v ---------------------- =   "..json.decode(v)["status"] )		
+	end
+end
+
+function LuaNetManager.RegisterListenNetMsg(MsgID,callBack)
+	Global.E:Add(MsgID,callBack);
+end	
+
+function LuaNetManager.RemoveListenNetMsg(MsgID,callBack)
+	Global.E:Remove(MsgID,callBack);
+end	
+
+function LuaNetManager.LuaProtoNetCallBack(msgID,responeBytes)
+
+	local ByteTable = responeBytes:ToTable()                
+	local parseStr={};			
+	for i = 1, #ByteTable do
+	  local useStr=ByteTable[i]
+	  table.insert(parseStr,string.char(useStr));
+	end	
+	local msgData = table.concat( parseStr )	
+	Global.E:Dispatch(msgID,msgData);
+	
+end
+
+function LuaNetManager.SendNetMsg(c2s_msgID,msgBodyData)
+	local byteArray = CommonLuaTools.CreateBuffer(#msgBodyData);
+	for i=1,string.len(msgBodyData) do
+		local useByte = string.byte(msgBodyData, i);
+		byteArray[i-1]= useByte;
+	end
+	CommonLuaTools.Log("正在发送协议::::::"..c2s_msgID)
+	NetworkManager.SendMessage(c2s_msgID,byteArray);
+end

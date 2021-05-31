@@ -1,0 +1,9 @@
+local Global = _G
+function Main( aug )
+
+	UIManager.OpenUIWindow("FirstUIWindow",nil);
+	LuaNetManager.OnInit();
+	--warn("warn");
+	--error("error");	
+end
+

@@ -1,0 +1,85 @@
+FirstUIWindow = UIWindowMetaTable:New();
+local Global = _G
+function FirstUIWindow:OnInit()
+	
+end
+function FirstUIWindow:OnOpen()
+	
+	self.callbackFunc = handler(self, self.OnClick)
+	
+	self.loginCallBack = handler(self, self.Login)
+	
+	self.UIWindow_ui:AddOnClickListener("Button", self.callbackFunc,nil);
+	
+	self.InputIP = self.UIWindow_ui:GetInputField("InputFieldIP");	
+	
+	self.InputPort = self.UIWindow_ui:GetInputField("InputFieldIPort");	
+	
+	
+--]]
+	--UISystemEvent.RegisterEvent("AAAWindow", UIEvent.OnOpened, self.Cb);
+--
+	--local text = self.UIWindow_ui:GetText("Text");
+	--if text ~= nil then
+	--	text.text = "你好";
+	--end
+	self.UIWindow_ui:SetImage("Image","role_tx_1");		
+	AutoReconnectController.EndReconnect = self.loginCallBack;
+	AutoReconnectController.Init();
+	
+	self.dispatchFunc = handler(self, self.EventDispathTest)
+	Global.E:Add("abc",self.dispatchFunc);
+		
+end
+
+function FirstUIWindow:EventDispathTest(eventName,userData)
+	
+	--CommonLuaTools.LogError("eventName---------------------- =  "..eventName)
+	--CommonLuaTools.LogError("userData---------------------- =  "..userData)
+	Global.E:Remove("abc",self.dispatchFunc);
+	
+end	
+
+function FirstUIWindow:Login()
+	
+	UIManager.OpenUIWindow("NetTestUIWindow",nil);
+	self.UIWindow_ui:RemoveOnClickListener("Button", self.callbackFunc,nil);
+	UIManager.CloseUIWindow(self.UIWindow_ui,true,nil,nil);
+	
+	
+end
+
+function FirstUIWindow:OnClick()
+
+	NetworkManager.SetServer(self.InputIP.text, tonumber(self.InputPort.text));
+	AutoReconnectController.Open = true;
+	NetworkManager.Connect();
+	
+
+end
+
+function FirstUIWindow:OnClose()
+	--self.UIWindow_ui:RemoveOnClickListener("Button", self.callbackFunc,nil);
+	
+end
+
+function FirstUIWindow:EnterAnim()
+	AnimSystem.UguiAlpha(self.UIWindow_ui.gameObject,0,1,1,0,InterpType.Default,true,false,RepeatType.Once,-1,nil,nil);
+	return 1;
+end
+
+function FirstUIWindow:OnCompleteEnterAnim()
+end
+
+function FirstUIWindow:OnRefresh()
+end
+
+function FirstUIWindow:ExitAnim()
+	return 0;
+end
+
+function FirstUIWindow:OnCompleteExitAnim()
+end
+
+function FirstUIWindow:OnDestroy()
+end
