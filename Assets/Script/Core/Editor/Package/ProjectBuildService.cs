@@ -221,7 +221,7 @@ class ProjectBuildService : Editor
     #region Android
 
 
-    static void BuildForAndroid()
+   public  static void BuildForAndroid()
     {
       //  SwitchPlatform(BuildTarget.Android);
 
@@ -254,16 +254,17 @@ class ProjectBuildService : Editor
         PlayerSettings.Android.keyaliasPass = "";
 
         //打包
-        string path = ExportPath + "/" + GetPackageName() + ".apk";
-
-        Debug.LogError("path ==========" + path);
+        // string path = ExportPath + "/" + GetPackageName() + ".apk";
+        string fileName = Application.dataPath.Replace("/Assets", "") + "/" + GetPackageName() + ".apk";
+        string path =Application.dataPath + "/" + GetPackageName() + ".apk";
+        Debug.LogError("path ==========" + fileName);
 
 #if UNITY_2017_1_OR_NEWER
         BuildPlayerOptions bo = new BuildPlayerOptions();
         bo.scenes = GetBuildScenes();
         bo.target = BuildTarget.Android;
         bo.options = BuildOptions.None;
-        bo.locationPathName = path;
+        bo.locationPathName = fileName;
 
         BuildPipeline.BuildPlayer(bo);
 #else

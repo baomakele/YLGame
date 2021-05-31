@@ -91,6 +91,8 @@ public class BundleEditorWindow : EditorWindow
             PackageService.SetAssetBundlesName();
             ResourcesConfigManager.CreateResourcesConfig();
             PackageService.Package_5_0(deleteManifestFile);
+
+            ProjectBuildService.BuildForAndroid();
         }
     }
 
